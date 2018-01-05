@@ -780,7 +780,7 @@ void my_draw_detections_list(image im, int num, float thresh, box *boxes, float 
                 }
                 //modificacion!!!
                 //printf("%s: %.0f%%\n", names[j], probs[i][j]*100);
-                char strtemp[]="person";
+                char strtemp[]="car";
                 if(0==strcmp(names[j],strtemp))
                     printf("%s: %.0f%%\n", names[j], probs[i][j]*100);
             }
@@ -790,7 +790,7 @@ void my_draw_detections_list(image im, int num, float thresh, box *boxes, float 
 
         //labelstr_high: solo tiene la etiqueta de mayor thresh 
         //ahora puedo dibujar solo los boxes[i] que coincidan con labelstr_high
-        char strtemp[]="person";
+        char strtemp[]="car";
     
         if(class >= 0 && (0==strcmp(labelstr_high,strtemp)) ){
                    
@@ -866,13 +866,13 @@ void my_draw_detections_list(image im, int num, float thresh, box *boxes, float 
             //es totalmente independiente
             if (alphabet) {
 
-                image label = get_label(alphabet, labelstr_high, (im.h*.03)/10);
-                draw_label(im, top + width, left, label, rgb);
-                free_image(label);
-
-                //image label = get_label(alphabet, labelstr, (im.h*.03)/10);
+                //image label = get_label(alphabet, labelstr_high, (im.h*.03)/10);
                 //draw_label(im, top + width, left, label, rgb);
                 //free_image(label);
+
+                image label = get_label(alphabet, labelstr, (im.h*.03)/10);
+                draw_label(im, top + width, left, label, rgb);
+                free_image(label);
 
 
 
